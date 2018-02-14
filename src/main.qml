@@ -6,6 +6,11 @@ Window {
     height: 200
     title: "Qt-Quick-Test"
     visible: true
+    FontLoader {
+        id: myTahoma;
+        source: "/font/tahoma.ttf"
+        onStatusChanged: if (loader.status === FontLoader.Ready) console.log('Loaded')
+    }
 
     visibility: Window.FullScreen
 
@@ -30,7 +35,7 @@ Window {
             id: press
             text: qsTr("PRESS ME")
             font.bold: false
-            font.family: "Tahoma"
+            font.family: myTahoma.name
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
             anchors.fill: parent
