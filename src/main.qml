@@ -6,7 +6,8 @@ Window {
     height: 200
     title: "Qt-Quick-Test"
     visible: true
-    FontLoader {
+    FontLoader
+    {
         id: myTahoma;
         source: "/font/tahoma.ttf"
         onStatusChanged: if (loader.status === FontLoader.Ready) console.log('Loaded')
@@ -14,14 +15,27 @@ Window {
 
     visibility: Window.FullScreen
 
-    MouseArea {
+    MouseArea
+    {
         anchors.fill: parent
-        onClicked: {
+        onClicked:
+        {
             Qt.quit();
         }
     }
 
-    Rectangle {
+    Item
+    {
+        focus: true
+        Keys.onEscapePressed:
+        {
+            event.accepted = true;
+            Qt.quit();
+        }
+    }
+
+    Rectangle
+    {
         id: rect
         color: "#47f879"
         border.color: "#037724"
@@ -31,9 +45,10 @@ Window {
         anchors.topMargin: 10
         anchors.fill: parent
 
-        Text {
+        Text
+        {
             id: press
-            text: qsTr("PRESS ME")
+            text: qsTr("CLICK OR ESC to EXIT")
             font.bold: false
             font.family: myTahoma.name
             verticalAlignment: Text.AlignVCenter
