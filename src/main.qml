@@ -6,6 +6,15 @@ Window {
     height: 200
     title: "Qt-Quick-Test"
     visible: true
+
+    Timer {
+        id: timer
+        interval: 1000
+        running: true
+        repeat: true
+        onTriggered: time.text = new Date().toLocaleTimeString(Qt.locale(), "hh:" + "mm:" + "ss")
+    }
+
     FontLoader
     {
         id: myTahoma;
@@ -37,24 +46,20 @@ Window {
     Rectangle
     {
         id: rect
-        color: "#47f879"
-        border.color: "#037724"
-        anchors.rightMargin: 10
-        anchors.leftMargin: 10
-        anchors.bottomMargin: 10
-        anchors.topMargin: 10
+        color: "#000000"
+        border.color: "#000000"
         anchors.fill: parent
 
         Text
         {
-            id: press
-            text: qsTr("CLICK OR ESC to EXIT")
+            id: time
             font.bold: false
             font.family: myTahoma.name
+            color: "#FFFFFF"
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
             anchors.fill: parent
-            font.pixelSize: 20
+            font.pixelSize: 250
         }
     }
 }
